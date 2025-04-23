@@ -25,5 +25,10 @@ app.post('/api/create', async (req, res) => {
   res.json({ message: 'Tarefa criada com sucesso!' });
 });
 
+app.delete('/api/delete/:id', async (req, res) => {
+    await Tarefa.findByIdAndDelete(req.params.id);
+    res.json({ message: 'Tarefa removida com sucesso' });
+  });
+  
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
